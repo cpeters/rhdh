@@ -1,0 +1,30 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: app-config-rhdh
+  namespace: rhdh-operator
+  labels:
+    rhdh.redhat.com/ext-config-sync: 'true'
+  annotations:
+    rhdh.redhat.com/backstage-name: developer-hub
+data:
+  app-config-rhdh.yaml: |
+    app:
+      title: uc2io Developer Hub
+      baseUrl: https://backstage-developer-hub-rhdh-operator.apps.alice.lab.uc2.io/
+    auth:
+      allowGuestAccess: false
+      environment: development
+      providers:
+        github:
+          development:
+            clientId: changeme
+            clientSecret: changeme
+    backend:
+      auth:
+        keys:
+        - secret: "changeme"
+      baseUrl: https://backstage-developer-hub-rhdh-operator.apps.alice.lab.uc2.io/
+      cors:
+        origin: https://backstage-developer-hub-rhdh-operator.apps.alice.lab.uc2.io/
+
